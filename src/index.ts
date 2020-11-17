@@ -1,8 +1,8 @@
-import express, { Application } from 'express'
+import express, { Application, Router } from 'express'
 import exphbs from 'express-handlebars'
 import { join } from 'path'
+import methodOverride from 'method-override'
 import * as dotenv from 'dotenv'
-
 import indexRoutes from './routes/indexRoutes'
 
 // init
@@ -25,6 +25,7 @@ app.set('view engine', '.hbs')
 // middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(methodOverride('_method'))
 
 // routes
 app.use('/', indexRoutes)
