@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const uri = process.env.MONGO_URI || 'mongodb://localhost/api-ts'
+const uri:string = process.env.MONGO_URI || 'mongodb://localhost/api-ts'
 
 mongoose.connect(uri, {
     useUnifiedTopology: true,

@@ -1,4 +1,4 @@
-import express, { Application, Router } from 'express'
+import express, { Application } from 'express'
 import exphbs from 'express-handlebars'
 import { join } from 'path'
 import methodOverride from 'method-override'
