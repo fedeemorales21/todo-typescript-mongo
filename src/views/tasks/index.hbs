@@ -1,4 +1,4 @@
-    {{#each task}}
+    {{#each tasks}}
     <div class="col-md-4">
         <div class="card">
             <div class="card-header">
@@ -9,7 +9,7 @@
             </div>
             <div class="card-footer">
                 <form action="/edit/{{_id}}" method="GET">
-                    <input type="submit" class="btn btn-danger" value="EDIT">
+                    <input type="submit" class="btn btn-warning" value="EDIT">
                 </form>
                 <form action="/delete/{{_id}}?_method=DELETE" method="POST">
                     <input type="submit" class="btn btn-danger" value="DONE">
