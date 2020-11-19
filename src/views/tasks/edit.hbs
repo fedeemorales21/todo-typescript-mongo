@@ -1,0 +1,24 @@
+
+<div class="row">
+    <div class="col-sm--12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-header">
+                <h2>Edit Task</h2>
+            </div>
+            <div class="card-body">
+           
+                <form action="/edit/{{task._id}}?_method=PUT" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Title" name="title" value="{{task.title}}">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Description" name="description">{{task.description}}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success btn-block" value="SAVE CHANGES">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

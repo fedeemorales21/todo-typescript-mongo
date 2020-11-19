@@ -4,7 +4,7 @@ import Task from '../models/Task'
 class IndexController {
 
     public async listTasks (req: Request, res: Response) {
-        const tasks = await Task.find({done: false}).lean()
+        const tasks = await Task.find({ done: false }).lean()
         res.render('tasks/index', { tasks })       
     }
     
@@ -14,21 +14,26 @@ class IndexController {
     
     public async addTask (req: Request, res: Response) {
         const { title, description } = req.body
-        const newTask = new Task({title,description})
+        const newTask = new Task({ title, description })
         await newTask.save()
         res.redirect('/')      
     }
 
-    public renderEdit (req: Request, res: Response) {
-        res.render('tasks/index')       
+    public async renderEdit (req: Request, res: Response) {
+        const task =  await Task.findById(req.params.id).lean()
+        res.render('tasks/edit', { task })       
     }
 
-    public editTask (req: Request, res: Response) {
-        res.render('tasks/index')       
+    public async editTask (req: Request, res: Response) {
+        const { id } = req.params
+        const { title, description } = req.body
+        await Task.findByIdAndUpdate(id, { title , description })
+        res.redirect('/')
     }
     
-    public deleteTask (req: Request, res: Response) {
-        res.render('tasks/index')       
+    public async deleteTask (req: Request, res: Response) {
+        await Task.findByIdAndDelete(req.params.id)
+        res.redirect('/')
     }
 
 }
